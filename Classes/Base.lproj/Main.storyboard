@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -18,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Index:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t7U-Ia-bLd">
-                                <rect key="frame" x="16" y="485" width="41.5" height="18"/>
+                                <rect key="frame" x="16" y="485" width="42" height="18"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <color key="textColor" red="0.44313725490196076" green="0.44313725490196076" blue="0.44313725490196076" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -68,10 +69,18 @@
                                     <action selector="onRemove:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="Ltg-iR-8bw"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q2H-Mv-Dgs">
+                                <rect key="frame" x="20" y="562" width="86" height="30"/>
+                                <state key="normal" title="get selected"/>
+                                <connections>
+                                    <action selector="showSelected" destination="vXZ-lx-hvc" eventType="touchUpInside" id="bfc-66-vLK"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.92941176469999998" green="0.92941176469999998" blue="0.92941176469999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <gestureRecognizers/>
                         <constraints>
+                            <constraint firstAttribute="leadingMargin" secondItem="q2H-Mv-Dgs" secondAttribute="leading" id="3J9-pD-1LT"/>
                             <constraint firstItem="Q33-2Y-lMM" firstAttribute="leading" secondItem="t7U-Ia-bLd" secondAttribute="trailing" constant="7.5" id="9gj-3P-iRd"/>
                             <constraint firstItem="t7U-Ia-bLd" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="16" id="ERn-Tq-BK9"/>
                             <constraint firstItem="hgs-nh-fvM" firstAttribute="centerY" secondItem="Be7-f3-ZyA" secondAttribute="centerY" id="FnR-OR-r5d"/>
@@ -80,6 +89,7 @@
                             <constraint firstAttribute="bottom" secondItem="t7U-Ia-bLd" secondAttribute="bottom" constant="97" id="Ma3-M4-z7h"/>
                             <constraint firstAttribute="trailing" secondItem="hgs-nh-fvM" secondAttribute="trailing" constant="20" id="YAk-WI-95W"/>
                             <constraint firstItem="t7U-Ia-bLd" firstAttribute="centerY" secondItem="Q33-2Y-lMM" secondAttribute="centerY" id="bwC-CH-e64"/>
+                            <constraint firstItem="q2H-Mv-Dgs" firstAttribute="top" secondItem="Be7-f3-ZyA" secondAttribute="bottom" constant="2" id="l8L-4N-2qh"/>
                             <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="Be7-f3-ZyA" secondAttribute="bottom" constant="40" id="rMS-bS-fsk"/>
                             <constraint firstItem="Be7-f3-ZyA" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="16" id="rtJ-Gm-EyR"/>
                         </constraints>
@@ -118,7 +128,7 @@
                                 <rect key="frame" x="0.0" y="86" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="m3R-h8-kmN" id="nn6-mE-tbH">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xsy-ND-UuT" customClass="SKTagView">

@@ -65,7 +65,6 @@ static NSString *const kTagsTableCellReuseIdentifier = @"TagsTableCell";
     return 100;
 }
 
-
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     TagsTableCell *cell = [tableView dequeueReusableCellWithIdentifier:kTagsTableCellReuseIdentifier forIndexPath:indexPath];
     [self configureCell: cell atIndexPath:indexPath];

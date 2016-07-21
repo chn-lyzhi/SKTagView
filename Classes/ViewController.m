@@ -34,9 +34,11 @@
         view.padding = UIEdgeInsetsMake(12, 12, 12, 12);
         view.interitemSpacing = 15;
         view.lineSpacing = 10;
+        view.selectedType = SKTagViewSelectedMultiple;
+//        view.maxSelected = 3;
         __weak SKTagView *weakView = view;
         view.didTapTagAtIndex = ^(NSUInteger index){
-            [weakView removeTagAtIndex:index];
+//            [weakView removeTagAtIndex:index];
         };
         view;
     });
@@ -53,6 +55,8 @@
         SKTag *tag = [SKTag tagWithText: text];
         tag.textColor = [UIColor whiteColor];
         tag.fontSize = 15;
+        tag.selectedBgColor = [UIColor redColor];
+        tag.selectedTextColor = [UIColor whiteColor];
         //tag.font = [UIFont fontWithName:@"Courier" size:15];
         //tag.enable = NO;
         tag.padding = UIEdgeInsetsMake(13.5, 12.5, 13.5, 12.5);
@@ -82,6 +86,9 @@
     tag.padding = UIEdgeInsetsMake(13.5, 12.5, 13.5, 12.5);
     tag.bgColor = [UIColor hx_colorWithHexString: self.colors[arc4random() % self.colors.count]];
     tag.cornerRadius = 5;
+    tag.selectedBgColor = [UIColor redColor];
+    tag.selectedTextColor = [UIColor whiteColor];
+
     
     [self.tagView insertTag: tag atIndex: self.index.text.integerValue];
 }
@@ -92,6 +99,11 @@
 
 - (IBAction)onTapBg: (id)sender {
     [self.view endEditing: YES];
+}
+
+- (IBAction)showSelected {
+    NSArray *titles = [self.tagView allSelectedTagsTitle];
+    NSArray *tags = [self.tagView allSelectedTags];
 }
 
 @end

@@ -8,11 +8,13 @@
 #import "SKTagView.h"
 #import "SKTagButton.h"
 
-
 @interface SKTagView ()
 
 @property (strong, nonatomic, nullable) NSMutableArray *tags;
 @property (assign, nonatomic) BOOL didSetup;
+
+//selectedNumber; 已选数量
+@property (assign, nonatomic) CGFloat selectedNumber;
 
 @end
 
@@ -100,6 +102,12 @@
     }
 }
 
+- (void)setSelectedType:(SKTagViewSelected)selectedType {
+    _selectedType = selectedType;
+    _selectedNumber = 0;
+    _maxSelectedNumber = 0;
+}
+
 #pragma mark - Private
 
 - (void)layoutTags {
@@ -155,6 +163,45 @@
 #pragma mark - IBActions
 
 - (void)onTag: (UIButton *)btn {
+    switch (_selectedType) {
+        case SKTagViewSelectedNone:
+            
+            break;
+        case SKTagViewSelectedSingle:
+            for (UIView *view in self.subviews) {
+                if ([view isKindOfClass:[UIButton class]]) {
+                    [(UIButton *)view setSelected:NO];
+                }
+            }
+            [btn setSelected:YES];
+            break;
+        case SKTagViewSelectedMultiple:
+            btn.selected = !btn.isSelected;
+            if (btn.selected) {
+                _selectedNumber += 1;
+            } else {
+                _selectedNumber -= 1;
+            }
+            if (_maxSelectedNumber == 0) {
+                _maxSelectedNumber = _tags.count;
+            }
+            if (_selectedNumber >= _maxSelectedNumber) {
+                for (UIView *view in self.subviews) {
+                    if ([view isKindOfClass:[UIButton class]]) {
+                        UIButton *button = (UIButton *)view;
+                        button.enabled = button.isSelected;
+                    }
+                }
+            } else {
+                for (UIView *view in self.subviews) {
+                    if ([view isKindOfClass:[UIButton class]]) {
+                        UIButton *button = (UIButton *)view;
+                        button.enabled = YES;
+                    }
+                }
+            }
+            break;
+    }
     if (self.didTapTagAtIndex) {
         self.didTapTagAtIndex([self.subviews indexOfObject: btn]);
     }
@@ -169,6 +216,7 @@
     [self addSubview: btn];
     [self.tags addObject: tag];
     
+
     self.didSetup = NO;
     [self invalidateIntrinsicContentSize];
 }
@@ -226,6 +274,26 @@
     
     self.didSetup = NO;
     [self invalidateIntrinsicContentSize];
+}
+
+- (NSArray *)allSelectedTagsTitle {
+    NSMutableArray *array = [NSMutableArray new];
+    for (UIButton *button in self.subviews) {
+        if (button.isSelected) {
+            [array addObject:button.currentTitle];
+        }
+    }
+    return array;
+}
+
+- (NSArray *)allSelectedTags {
+    NSMutableArray *array = [NSMutableArray new];
+    [self.subviews enumerateObjectsUsingBlock:^(__kindof UIView * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        if (((UIButton *)obj).isSelected) {
+            [array addObject:self.tags[idx]];
+        }
+    }];
+    return array;
 }
 
 @end

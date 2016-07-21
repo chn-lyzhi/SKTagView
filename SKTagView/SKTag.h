@@ -27,6 +27,11 @@
 ///default:YES
 @property (assign, nonatomic) BOOL enable;
 
+//default:NO
+@property (assign, nonatomic) BOOL selected;
+@property (strong, nonatomic, nullable) UIColor *selectedTextColor;
+@property (strong, nonatomic, nullable) UIColor *selectedBgColor;
+
 - (nonnull instancetype)initWithText: (nonnull NSString *)text;
 + (nonnull instancetype)tagWithText: (nonnull NSString *)text;
 

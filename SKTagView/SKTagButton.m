@@ -41,6 +41,15 @@
         [btn setBackgroundImage:[self imageWithColor:highlightedBgColor] forState:UIControlStateHighlighted];
     }
     
+    if (tag.selectedBgColor) {
+        [btn setBackgroundImage:[self imageWithColor:tag.selectedBgColor] forState:UIControlStateSelected];
+    }
+    if (tag.selectedTextColor) {
+        [btn setTitleColor:tag.selectedTextColor forState:UIControlStateSelected];
+    }
+    
+    [btn setSelected:tag.selected];
+        
     btn.layer.cornerRadius = tag.cornerRadius;
     btn.layer.masksToBounds = YES;
     
