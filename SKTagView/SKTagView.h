@@ -24,6 +24,7 @@ typedef enum : NSUInteger {
 @property (copy, nonatomic, nullable) void (^didTapTagAtIndex)(NSUInteger index);
 
 @property (assign, nonatomic) SKTagViewSelected selectedType;
+@property (assign, nonatomic) BOOL isUnSelected;  //default is YES
 
 @property (assign, nonatomic) CGFloat maxSelectedNumber;  //当 type 为 SKTagViewSelectedMultiple 可用，可选最多数量
 

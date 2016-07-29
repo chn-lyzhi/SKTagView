@@ -106,6 +106,7 @@
     _selectedType = selectedType;
     _selectedNumber = 0;
     _maxSelectedNumber = 0;
+    _isUnSelected = YES;
 }
 
 #pragma mark - Private
@@ -168,12 +169,16 @@
             
             break;
         case SKTagViewSelectedSingle:
-            for (UIView *view in self.subviews) {
-                if ([view isKindOfClass:[UIButton class]]) {
-                    [(UIButton *)view setSelected:NO];
+            if (btn.isSelected && _isUnSelected) {
+                btn.selected = NO;
+            } else {
+                for (UIView *view in self.subviews) {
+                    if ([view isKindOfClass:[UIButton class]]) {
+                        [(UIButton *)view setSelected:NO];
+                    }
                 }
+                [btn setSelected:YES];
             }
-            [btn setSelected:YES];
             break;
         case SKTagViewSelectedMultiple:
             btn.selected = !btn.isSelected;

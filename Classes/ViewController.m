@@ -34,7 +34,7 @@
         view.padding = UIEdgeInsetsMake(12, 12, 12, 12);
         view.interitemSpacing = 15;
         view.lineSpacing = 10;
-        view.selectedType = SKTagViewSelectedMultiple;
+        view.selectedType = SKTagViewSelectedSingle;
 //        view.maxSelected = 3;
         __weak SKTagView *weakView = view;
         view.didTapTagAtIndex = ^(NSUInteger index){
