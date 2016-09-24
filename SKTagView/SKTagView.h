@@ -36,6 +36,10 @@ typedef enum : NSUInteger {
 
 - ( NSArray * _Nullable )allSelectedTagsTitle;
 - ( NSArray * _Nullable )allSelectedTags;
+- ( NSArray * _Nullable )allSelectedIndex;
+
+- (NSUInteger)indexOfTag:( SKTag * _Nullable)tag;
+- ( SKTag * _Nullable )tagAtIndex:(NSUInteger)index;
 
 @end
 

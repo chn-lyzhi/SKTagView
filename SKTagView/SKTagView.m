@@ -301,4 +301,15 @@
     return array;
 }
 
+- (NSUInteger)indexOfTag:(SKTag *)tag {
+    NSParameterAssert(tag);
+    NSUInteger index = [self.tags indexOfObject: tag];
+    return index;
+}
+
+- (SKTag *)tagAtIndex:(NSUInteger)index {
+    SKTag *tag = [self.tags objectAtIndex:index];
+    return tag;
+}
+
 @end
