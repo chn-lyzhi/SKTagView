@@ -315,8 +315,17 @@
 
 - (void)updateTag:(NSUInteger)index {
     SKTag *tag = [self tagAtIndex:index];
-    SKTagButton *btn = [self viewWithTag:index];
-    [btn setTitle:tag.text forState:UIControlStateNormal];
+    SKTagButton *btn;
+    if ([self.subviews[index] isKindOfClass:[SKTagButton class]]) {
+        btn = self.subviews[index];
+        [btn setTitle:tag.text forState:UIControlStateNormal];
+        
+        self.didSetup = NO;
+        [self setNeedsLayout];
+        [self invalidateIntrinsicContentSize];
+    } else {
+        
+    }
 }
 
 
