@@ -220,7 +220,7 @@
     [btn addTarget: self action: @selector(onTag:) forControlEvents: UIControlEventTouchUpInside];
     [self addSubview: btn];
     [self.tags addObject: tag];
-    [btn setTag:self.tags.count];
+    [btn setTag:self.tags.count - 1];
 
     self.didSetup = NO;
     [self invalidateIntrinsicContentSize];
