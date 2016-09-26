@@ -220,7 +220,7 @@
     [btn addTarget: self action: @selector(onTag:) forControlEvents: UIControlEventTouchUpInside];
     [self addSubview: btn];
     [self.tags addObject: tag];
-    
+    [btn setTag:self.tags.count];
 
     self.didSetup = NO;
     [self invalidateIntrinsicContentSize];
@@ -235,6 +235,7 @@
         [btn addTarget: self action: @selector(onTag:) forControlEvents: UIControlEventTouchUpInside];
         [self insertSubview: btn atIndex: index];
         [self.tags insertObject: tag atIndex: index];
+        [btn setTag:index];
         
         self.didSetup = NO;
         [self invalidateIntrinsicContentSize];
@@ -311,5 +312,12 @@
     SKTag *tag = [self.tags objectAtIndex:index];
     return tag;
 }
+
+- (void)updateTag:(NSUInteger)index {
+    SKTag *tag = [self tagAtIndex:index];
+    SKTagButton *btn = [self viewWithTag:index];
+    [btn setTitle:tag.text forState:UIControlStateNormal];
+}
+
 
 @end

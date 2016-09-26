@@ -40,6 +40,7 @@ typedef enum : NSUInteger {
 
 - (NSUInteger)indexOfTag:( SKTag * _Nullable)tag;
 - ( SKTag * _Nullable )tagAtIndex:(NSUInteger)index;
+- (void)updateTag:(NSUInteger)index;
 
 @end
 
