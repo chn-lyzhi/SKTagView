@@ -34,6 +34,8 @@ typedef enum : NSUInteger {
 - (void)removeTagAtIndex: (NSUInteger)index;
 - (void)removeAllTags;
 
+- ( NSArray<SKTag *> * _Nullable)allTags;
+
 - ( NSArray * _Nullable )allSelectedTagsTitle;
 - ( NSArray * _Nullable )allSelectedTags;
 - ( NSArray * _Nullable )allSelectedIndex;

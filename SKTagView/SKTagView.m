@@ -302,6 +302,10 @@
     return array;
 }
 
+- (NSArray<SKTag *> *)allTags {
+    return self.tags;
+}
+
 - (NSUInteger)indexOfTag:(SKTag *)tag {
     NSParameterAssert(tag);
     NSUInteger index = [self.tags indexOfObject: tag];
